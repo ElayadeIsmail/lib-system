@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
 import { CategoriesModule } from './categories/categories.module';
+import { LibrarianModule } from './librarian/librarian.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CategoriesModule } from './categories/categories.module';
     TypeOrmModule.forRoot(),
     BooksModule,
     CategoriesModule,
+    LibrarianModule,
   ],
   controllers: [AppController],
   providers: [AppService],
