@@ -7,12 +7,13 @@ type Book {
   ISBN: Int!
   title: String!
   language: String!
-  bindingId: Int!
-  PublicationYear: String!
-  CategoryType: Int!
-  NoOfCopiesActual: Int!
-  NoOfCopiesCurrent: Int!
+  publicationYear: String!
+  categoryId: Int!
+  category: Category!
+  noOfCopiesActual: Int!
+  noOfCopiesCurrent: Int!
   createDateTime: DateTime!
+  updateDateTime: DateTime!
 }
 
 """
@@ -23,6 +24,8 @@ scalar DateTime
 type Category {
   id: Int!
   name: String!
+  createDateTime: DateTime!
+  updateDateTime: DateTime!
 }
 
 type Query {
@@ -42,11 +45,10 @@ input CreateBookDto {
   ISBN: Int!
   title: String!
   language: String!
-  bindingId: Int!
-  PublicationYear: String!
-  CategoryType: Int!
-  NoOfCopiesActual: Int!
-  NoOfCopiesCurrent: Int!
+  publicationYear: String!
+  categoryId: Int!
+  noOfCopiesActual: Int!
+  noOfCopiesCurrent: Int!
 }
 
 input CreateCategoryDto {

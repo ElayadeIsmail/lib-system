@@ -3,8 +3,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
+import { Category } from '../categories/category.entity';
 
 @Entity()
 @ObjectType()
@@ -25,27 +28,31 @@ export class Book {
   @Column()
   language: string;
 
-  @Field(() => Int)
-  @Column()
-  bindingId: number;
-
   @Field()
   @Column({ type: 'date' })
-  PublicationYear: string;
+  publicationYear: string;
 
   @Field(() => Int)
   @Column()
-  CategoryType: number;
+  categoryId: number;
+
+  @Field(() => Category)
+  @ManyToOne(() => Category, (category) => category.books)
+  category: Category;
 
   @Field(() => Int)
   @Column()
-  NoOfCopiesActual: number;
+  noOfCopiesActual: number;
 
   @Field(() => Int)
   @Column()
-  NoOfCopiesCurrent: number;
+  noOfCopiesCurrent: number;
 
   @Field()
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createDateTime: Date;
+
+  @Field()
+  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  updateDateTime: Date;
 }

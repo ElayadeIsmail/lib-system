@@ -11,18 +11,15 @@ export class CreateBookDto {
   @Field()
   language: string;
 
-  @Field(() => Int)
-  bindingId: number;
-
   @Field()
-  PublicationYear: string;
+  publicationYear: string;
 
   @Field(() => Int)
-  CategoryType: number;
+  categoryId: number;
 
   @Field(() => Int)
-  NoOfCopiesActual: number;
+  noOfCopiesActual: number;
 
   @Field(() => Int)
-  NoOfCopiesCurrent: number;
+  noOfCopiesCurrent: number;
 }
