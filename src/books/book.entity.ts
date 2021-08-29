@@ -1,11 +1,20 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
 export class Book {
   @Field(() => Int)
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Field(() => Int)
+  @Column({ unique: true })
   ISBN: number;
 
   @Field()
@@ -21,8 +30,8 @@ export class Book {
   bindingId: number;
 
   @Field()
-  @Column()
-  PublicationYear: Date;
+  @Column({ type: 'date' })
+  PublicationYear: string;
 
   @Field(() => Int)
   @Column()

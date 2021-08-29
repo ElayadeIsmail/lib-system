@@ -2,6 +2,58 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Book {
+  id: Int!
+  ISBN: Int!
+  title: String!
+  language: String!
+  bindingId: Int!
+  PublicationYear: String!
+  CategoryType: Int!
+  NoOfCopiesActual: Int!
+  NoOfCopiesCurrent: Int!
+  createDateTime: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Category {
+  id: Int!
+  name: String!
+}
+
 type Query {
   sayHello: String!
+  getCategoryById(id: Int!): Category
+  getAllCategories: [Category!]!
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookDto!): Book!
+  createCategory(categoryInput: CreateCategoryDto!): Category!
+  updateCategory(updateCategoryInput: UpdateCategoryDto!): Category!
+  deleteCategory(id: Int!): Category!
+}
+
+input CreateBookDto {
+  ISBN: Int!
+  title: String!
+  language: String!
+  bindingId: Int!
+  PublicationYear: String!
+  CategoryType: Int!
+  NoOfCopiesActual: Int!
+  NoOfCopiesCurrent: Int!
+}
+
+input CreateCategoryDto {
+  name: String!
+}
+
+input UpdateCategoryDto {
+  id: Int!
+  name: String!
 }
