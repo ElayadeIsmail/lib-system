@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { LibrarianService } from './librarian.service';
+import { AuthService } from './auth.service';
 import { LibrarianResolver } from './librarian.resolver';
+import { LibrarianService } from './librarian.service';
 
 @Module({
-  providers: [LibrarianService, LibrarianResolver]
+  providers: [LibrarianService, LibrarianResolver, AuthService],
 })
 export class LibrarianModule {}
