@@ -1,2 +1,2 @@
 # lib-system
-Learning NestJs by building a project.
+Learning NestJs by building this project.
