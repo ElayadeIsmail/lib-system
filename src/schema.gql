@@ -28,10 +28,19 @@ type Category {
   updateDateTime: DateTime!
 }
 
+type Librarian {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  isAdmin: Boolean!
+}
+
 type Query {
   sayHello: String!
   getCategoryById(id: Int!): Category
   getAllCategories: [Category!]!
+  getAllLibrarians: [Librarian!]!
 }
 
 type Mutation {
@@ -39,6 +48,7 @@ type Mutation {
   createCategory(categoryInput: CreateCategoryDto!): Category!
   updateCategory(updateCategoryInput: UpdateCategoryDto!): Category!
   deleteCategory(id: Int!): Category!
+  createLibrarian(createLibrarianInput: CreateLibrarianDto!): Librarian!
 }
 
 input CreateBookDto {
@@ -58,4 +68,12 @@ input CreateCategoryDto {
 input UpdateCategoryDto {
   id: Int!
   name: String!
+}
+
+input CreateLibrarianDto {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  isAdmin: Boolean = false
 }

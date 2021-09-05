@@ -10,7 +10,11 @@ export class Librarian {
 
   @Field()
   @Column()
-  name: string;
+  firstName: string;
+
+  @Field()
+  @Column()
+  lastName: string;
 
   @Field()
   @Column({ unique: true })
@@ -20,6 +24,6 @@ export class Librarian {
   password: string;
 
   @Field()
-  @Column({ default: false })
+  @Column()
   isAdmin: boolean;
 }

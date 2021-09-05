@@ -20,7 +20,7 @@ export class LibrarianService {
     const { email, password } = createLibrarianDto;
     const librarian = await this.librarianRepo.find({ email });
     if (librarian.length) {
-      throw new BadRequestException('Email On use');
+      throw new BadRequestException('Email In use');
     }
 
     // Hashing The Librarian Password
@@ -38,5 +38,9 @@ export class LibrarianService {
     const newLibrarian = this.librarianRepo.create(createLibrarianDto);
 
     return this.librarianRepo.save(newLibrarian);
+  }
+
+  findAll() {
+    return this.librarianRepo.find();
   }
 }
