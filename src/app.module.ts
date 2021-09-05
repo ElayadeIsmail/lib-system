@@ -58,7 +58,7 @@ export class AppModule implements NestModule {
             logErrors: true,
           }),
           saveUninitialized: false,
-          secret: 'FDLSKKDJ&ÉNCNCJFÉDC565',
+          secret: this.configService.get('COOKIE_SECRET'),
           resave: false,
           cookie: {
             sameSite: true,
