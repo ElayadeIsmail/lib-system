@@ -13,7 +13,7 @@ export class Librarian {
   name: string;
 
   @Field()
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
