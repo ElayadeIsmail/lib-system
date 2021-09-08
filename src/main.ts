@@ -3,7 +3,9 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // add Global Validation Pipe
+  app.enableCors({
+    credentials: true,
+  });
   app.use((req, res, next) => {
     res.removeHeader('x-powered-by');
     res.removeHeader('date');

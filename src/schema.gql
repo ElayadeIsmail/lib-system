@@ -40,7 +40,7 @@ type Query {
   sayHello: String!
   getCategoryById(id: Int!): Category
   getAllCategories: [Category!]!
-  getAllLibrarians: [Librarian!]!
+  whoAmI: Librarian!
 }
 
 type Mutation {
@@ -49,6 +49,7 @@ type Mutation {
   updateCategory(updateCategoryInput: UpdateCategoryDto!): Category!
   deleteCategory(id: Int!): Category!
   createLibrarian(createLibrarianInput: CreateLibrarianDto!): Librarian!
+  login(loginInput: LoginInputDto!): Librarian!
 }
 
 input CreateBookDto {
@@ -76,4 +77,9 @@ input CreateLibrarianDto {
   email: String!
   password: String!
   isAdmin: Boolean = false
+}
+
+input LoginInputDto {
+  email: String!
+  password: String!
 }

@@ -43,4 +43,10 @@ export class LibrarianService {
   findAll() {
     return this.librarianRepo.find();
   }
+  find(email: string) {
+    return this.librarianRepo.find({ email });
+  }
+  findOne(id: number) {
+    return this.librarianRepo.findOne(id);
+  }
 }

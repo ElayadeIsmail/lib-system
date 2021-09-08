@@ -55,15 +55,17 @@ export class AppModule implements NestModule {
         session({
           store: new (RedisStore(session))({
             client: this.redis,
+            disableTouch: true,
             logErrors: true,
           }),
           saveUninitialized: false,
           secret: this.configService.get('COOKIE_SECRET'),
           resave: false,
           cookie: {
-            sameSite: true,
-            httpOnly: false,
-            maxAge: 60000,
+            maxAge: 1000 * 3600 * 24 * 365 * 10,
+            httpOnly: true,
+            secure: false,
+            sameSite: 'lax',
           },
         }),
       )
