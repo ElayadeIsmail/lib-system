@@ -47,7 +47,6 @@ export class LibrarianResolver {
   @UseGuards(AuthGuard)
   @Query(() => String)
   test(@CurrentUser() user: Librarian) {
-    console.log('currentUser', user);
     return 'dONE';
   }
 }
