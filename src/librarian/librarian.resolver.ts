@@ -36,7 +36,8 @@ export class LibrarianResolver {
 
   @Query(() => Librarian)
   whoAmI(@Context() { req }: MyContext) {
-    const userId = req.session.userId;
-    return this.libraryService.findOne(userId);
+    console.log('currentUser', req.currentUser);
+    console.log('userId', req.session.userId);
+    return req.currentUser;
   }
 }
