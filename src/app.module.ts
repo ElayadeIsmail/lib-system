@@ -28,6 +28,7 @@ import { REDIS, RedisModule } from './redis';
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      context: ({ req, res }) => ({ req, res }),
     }),
     TypeOrmModule.forRoot(),
     BooksModule,

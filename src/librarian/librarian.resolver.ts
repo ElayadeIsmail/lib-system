@@ -1,6 +1,9 @@
+import { UseGuards } from '@nestjs/common';
 import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { AuthGuard } from 'src/guards/auth.guard';
 import { MyContext } from 'src/types';
 import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/currentuser.decorator';
 import { LoginInputDto } from './dtos/auth/login.dto';
 import { CreateLibrarianDto } from './dtos/librarion/create-librarian.dto';
 import { Librarian } from './librarian.entity';
@@ -39,5 +42,12 @@ export class LibrarianResolver {
     console.log('currentUser', req.currentUser);
     console.log('userId', req.session.userId);
     return req.currentUser;
+  }
+
+  @UseGuards(AuthGuard)
+  @Query(() => String)
+  test(@CurrentUser() user: Librarian) {
+    console.log('currentUser', user);
+    return 'dONE';
   }
 }
