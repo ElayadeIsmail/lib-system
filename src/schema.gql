@@ -41,7 +41,8 @@ type Query {
   getCategoryById(id: Int!): Category
   getAllCategories: [Category!]!
   whoAmI: Librarian!
-  test: String!
+  isAuth: String!
+  isAdmin: String!
 }
 
 type Mutation {

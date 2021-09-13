@@ -1,5 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { AdminGuard } from 'src/guards/admin.guard';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { MyContext } from 'src/types';
 import { AuthService } from './auth.service';
@@ -46,7 +47,13 @@ export class LibrarianResolver {
 
   @UseGuards(AuthGuard)
   @Query(() => String)
-  test(@CurrentUser() user: Librarian) {
-    return 'dONE';
+  isAuth(@CurrentUser() user: Librarian) {
+    return 'Authenticated ✅';
+  }
+
+  @UseGuards(AdminGuard)
+  @Query(() => String)
+  isAdmin(@CurrentUser() user: Librarian) {
+    return 'Admin ✅';
   }
 }
